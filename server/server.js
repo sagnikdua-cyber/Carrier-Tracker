@@ -32,20 +32,21 @@ app.get('/api/health', (req, res) => {
 
 // Database Connection
 if (process.env.MONGODB_URI && process.env.MONGODB_URI !== 'YOUR_MONGODB_CONNECTION_STRING') {
-  mongoose.connect(process.env.MONGODB_URI)
+  mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 5000 })
     .then(() => {
       console.log('Connected to MongoDB Atlas');
+      
+      // Local development server listener
+      if (process.env.NODE_ENV !== 'production') {
+        app.listen(PORT, () => {
+          console.log(`Server is running on port ${PORT}`);
+        });
+      }
     })
     .catch((error) => {
       console.error('Error connecting to MongoDB:', error.message);
+      console.error('Please ensure your IP address is whitelisted in MongoDB Atlas or check your internet connection.');
     });
-    
-  // Local development server listener
-  if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  }
 } else {
   console.warn('WARNING: MONGODB_URI is not set properly in .env');
   console.warn('Server will start without DB connection for testing routes, but API will fail.');
