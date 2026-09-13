@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const loginForm = document.getElementById('login-form');
-    const loginError = document.getElementById('login-error');
+    const loginError = document.getElementById('error-message');
     const loginBtn = document.getElementById('login-btn');
 
     loginForm.addEventListener('submit', async (e) => {
