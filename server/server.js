@@ -40,14 +40,21 @@ if (process.env.MONGODB_URI && process.env.MONGODB_URI !== 'YOUR_MONGODB_CONNECT
       console.error('Error connecting to MongoDB:', error.message);
     });
     
-  // Start server regardless of immediate DB connection success
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  // Local development server listener
+  if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  }
 } else {
   console.warn('WARNING: MONGODB_URI is not set properly in .env');
   console.warn('Server will start without DB connection for testing routes, but API will fail.');
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} (NO DATABASE)`);
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT} (NO DATABASE)`);
+    });
+  }
 }
+
+// Export for Vercel Serverless
+module.exports = app;
