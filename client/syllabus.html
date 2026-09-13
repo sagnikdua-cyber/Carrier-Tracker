@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Tracker - Syllabus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .syllabus-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .syllabus-header {
+            margin-bottom: 3rem;
+        }
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .syllabus-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .syllabus-section h2 {
+            font-size: 1.75rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .syllabus-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .syllabus-category h3 {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+        
+        .syllabus-category p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-left: 1rem;
+            border-left: 2px solid var(--border-color);
+            padding-left: 1rem;
+        }
+
+        .syllabus-list {
+            margin-left: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .syllabus-list li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Career Tracker</div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="journey.html">Journey Roadmap</a>
+            <a href="syllabus.html" class="active">Syllabus</a>
+        </div>
+        <div class="nav-user">
+            <span id="username-display"></span>
+            <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+        </div>
+    </nav>
+
+    <main class="syllabus-container">
+        <header class="syllabus-header">
+            <h1>Master Syllabus Reference</h1>
+            <p>Complete curriculum breakdown for GATE, TCS NQT, and Government Exams.</p>
+        </header>
+
+        <!-- GATE CS/IT -->
+        <section class="syllabus-section">
+            <h2>GATE 2027: Computer Science & IT (CS)</h2>
+            
+            <div class="syllabus-category">
+                <h3>Section 1: Engineering Mathematics</h3>
+                <p><strong>Discrete Mathematics:</strong> Propositional and first order logic. Sets, relations, functions, partial orders and lattices. Monoids, Groups. Graphs: connectivity, matching, colouring. Combinatorics: counting, recurrence relations, generating functions.<br>
+                <strong>Linear Algebra:</strong> Matrices, determinants, system of linear equations, eigenvalues and eigenvectors, LU decomposition.<br>
+                <strong>Calculus:</strong> Limits, continuity and differentiability, Maxima and minima, Mean value theorem, Integration.<br>
+                <strong>Probability and Statistics:</strong> Random variables, Uniform, normal, exponential, Poisson and binomial distributions. Mean, median, mode and standard deviation. Conditional probability and Bayes theorem.</p>
+            </div>
+            
+            <div class="syllabus-category">
+                <h3>Section 2: Digital Logic</h3>
+                <p>Boolean algebra and minimization – algebraic technique, Karnaugh map, tabular method. Design of combinational and sequential circuits. Number representation and arithmetic (fixed and floating point).</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 3: Computer Organization and Architecture</h3>
+                <p>Instruction set and addressing modes. Design of arithmetic and logic unit (ALU). Design of control unit – hardwired and microprogrammed. Memory interfacing and hierarchy: performance, cache memory mapping. I/O interface (interrupt and DMA). Instruction pipelining, pipeline hazards.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 4: Programming and Data Structures</h3>
+                <p>Programming in C. Recursion. Arrays, stacks, queues, linked lists, trees, binary search trees, binary heaps, graphs.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 5: Algorithms</h3>
+                <p>Searching, sorting, hashing. Asymptotic worst case time and space complexity. Algorithm design techniques: greedy, dynamic programming and divide-and-conquer. Graph traversals, minimum spanning trees, shortest paths.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 6: Theory of Computation</h3>
+                <p>Regular expressions and finite automata. Context-free grammars and push-down automata. Regular and context-free languages, pumping lemma. Turing machines and undecidability.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 7: Compiler Design</h3>
+                <p>Lexical analysis, parsing, syntax-directed translation. Runtime environments. Intermediate code generation. Local optimisation, Data flow analyses: constant propagation, liveness analysis, common sub expression elimination.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 8: Operating System</h3>
+                <p>System calls, processes, threads, inter-process communication, concurrency and synchronization. Deadlock. CPU and I/O scheduling. Memory management and virtual memory. File systems.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 9: Databases</h3>
+                <p>ER-model. Relational model: relational algebra, tuple calculus, SQL. Integrity constraints, normal forms. File organization, indexing (e.g., B and B+ trees). Transactions and concurrency control.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 10: Computer Networks</h3>
+                <p>Principles of Layering; Basics of switching (circuit, packet and virtual circuit) and performance metrics; Data link layer: error detection, Medium Access Control, Ethernet; Distance vector and link state routing; IPv4 - Fragmentation, CIDR Notation, Network Address Translation; TCP- flow control and congestion control, socket API; DNS and HTTP.</p>
+            </div>
+        </section>
+
+        <!-- GATE DA -->
+        <section class="syllabus-section">
+            <h2>GATE 2027: Data Science and Artificial Intelligence (DA)</h2>
+            
+            <div class="syllabus-category">
+                <h3>Section 1: Probability and Statistics</h3>
+                <p>Counting (permutation and combinations), probability axioms, Sample space, events, independent events, mutually exclusive events, marginal, conditional and joint probability, Bayes Theorem, conditional expectation and variance, mean, median, mode and standard deviation, correlation, and covariance, random variables, discrete random variables and probability mass functions, uniform, Bernoulli, binomial distribution, Continuous random variables and probability distribution function, uniform, exponential, Poisson, normal, standard normal, t-distribution, chi-squared distributions, cumulative distribution function, Conditional PDF, Central limit theorem, confidence interval, z-test, t-test, chi-squared test.</p>
+            </div>
+            
+            <div class="syllabus-category">
+                <h3>Section 2: Linear Algebra</h3>
+                <p>Vector space, subspaces, linear dependence and independence of vectors, matrices, projection matrix, orthogonal matrix, idempotent matrix, partition matrix and their properties, quadratic forms, systems of linear equations and solutions; Gaussian elimination, eigenvalues and eigenvectors, determinant, rank, nullity, projections, LU decomposition, singular value decomposition.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 3: Calculus and Optimization</h3>
+                <p>Functions of a single variable, limit, continuity and differentiability, Taylor series, maxima and minima, optimization involving a single variable.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 4: Programming, Data Structures and Algorithms</h3>
+                <p>Programming in Python, basic data structures: stacks, queues, linked lists, trees, hash tables; Search algorithms: linear search and binary search, basic sorting algorithms: selection sort, bubble sort and insertion sort; divide and conquer: mergesort, quicksort; introduction to graph theory; basic graph algorithms: traversals and shortest path.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 5: Database Management and Warehousing</h3>
+                <p>ER-model, relational model: relational algebra, tuple calculus, SQL, integrity constraints, normal form, file organization, indexing, data types, data transformation such as normalization, discretization, sampling, compression; data warehouse modelling: schema for multidimensional data models, concept hierarchies, measures: categorization and computations.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 6: Machine Learning</h3>
+                <p><strong>Supervised Learning:</strong> regression and classification problems, simple linear regression, multiple linear regression, ridge regression, logistic regression, k-nearest neighbour, naive Bayes classifier, linear discriminant analysis, support vector machine, decision trees, bias-variance trade-off, cross-validation methods such as leave-one-out (LOO) cross-validation, k-folds cross-validation, multi-layer perceptron, feed-forward neural network.<br>
+                <strong>Unsupervised Learning:</strong> clustering algorithms, k-means/k-medoid, hierarchical clustering, top-down, bottom-up: single-linkage, multiple-linkage, dimensionality reduction, principal component analysis.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Section 7: AI</h3>
+                <p>Search: informed, uninformed, adversarial; logic, propositional, predicate; reasoning under uncertainty topics — conditional independence representation, exact inference through variable elimination, and approximate inference through sampling.</p>
+            </div>
+        </section>
+
+        <!-- TCS NQT -->
+        <section class="syllabus-section">
+            <h2>TCS NQT 2027 Syllabus</h2>
+            
+            <div class="syllabus-category">
+                <h3>Part A: Foundation Section</h3>
+                <p><strong>1. Numerical Ability (20 Questions | 25 Minutes)</strong><br>
+                • Number System: Divisibility rules, LCM & HCF, Decimals, Fractions, and Surds.<br>
+                • Arithmetic: Percentages, Profit & Loss, Simple & Compound Interest, Averages, Ratios & Proportions, Alligations & Mixtures, Time & Work, Pipes & Cisterns, Speed, Time & Distance.<br>
+                • Modern Math: Permutations & Combinations, Probability, Clocks & Calendars.<br>
+                • Geometry & Mensuration: Area and Perimeter of 2D shapes, Surface Area and Volume of 3D shapes.<br>
+                • Data Interpretation: Pie Charts, Bar Graphs, Line Graphs, and Tabular Data.<br>
+                • Statistics: Mean, Median, Mode, Variance, and Standard Deviation.</p>
+
+                <p><strong>2. Verbal Ability (25 Questions | 25 Minutes)</strong><br>
+                • Grammar: Subject-Verb Agreement, Tenses, Prepositions, Articles, and Active/Passive Voice.<br>
+                • Vocabulary: Synonyms, Antonyms, Idioms & Phrases, and Spellings.<br>
+                • Sentence Structure: Sentence Completion (Cloze Test), Sentence Arrangement (Para Jumbles), and Sentence Improvement.<br>
+                • Comprehension: Reading passages to identify main ideas, themes, and inferences.</p>
+
+                <p><strong>3. Reasoning Ability (20 Questions | 25 Minutes)</strong><br>
+                • Logical Reasoning: Syllogisms, Blood Relations, Coding-Decoding, and Direction Sense.<br>
+                • Analytical Reasoning: Linear & Circular Seating Arrangements, Puzzles, and Data Sufficiency.<br>
+                • Visual Reasoning: Paper Cutting & Folding, Cubes & Dice, and Figure Classification.<br>
+                • Critical Reasoning: Statement & Conclusion, Statement & Assumptions, and Cause & Effect.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>Part B: Advanced Section</h3>
+                <p><strong>1. Advanced Quants & Reasoning (14 Questions | 25 Minutes)</strong><br>
+                • Complex Quants: Logarithms, Progressions (AP/GP), Trigonometry, and Coordinate Geometry.<br>
+                • Advanced Logic: Complex Seating Arrangements and logical connectivity puzzles.</p>
+
+                <p><strong>2. Advanced Coding (2 Questions | 90 Minutes)</strong><br>
+                • Languages: C, C++, Java, Python, or Perl.<br>
+                • Data Structures: Arrays (Rotation, Kadane's Algorithm, Two-pointer techniques, and Hashing), Strings (Anagrams, Palindromes, Pattern Matching, and String compression), Linked Lists & Trees.<br>
+                • Algorithms: Sorting/Searching (Quick Sort, Merge Sort, Binary Search), Logic-Based (Number Theory, Prime factors, GCD, Armstrong numbers, Greedy Algorithms, and Basic Dynamic Programming like Fibonacci/Staircase).</p>
+            </div>
+        </section>
+
+        <!-- Government Exams -->
+        <section class="syllabus-section">
+            <h2>High-Salary Government Exams (50k+ Minimum Salary)</h2>
+            
+            <div class="syllabus-category">
+                <h3>1. RBI Grade B (General)</h3>
+                <p><strong>Starting Salary:</strong> ~₹1,16,000/month</p>
+                <p><strong>Phase 1 (Objective):</strong><br>
+                • General Awareness (Heavy focus on RBI news, banking, current affairs)<br>
+                • Quantitative Aptitude (Data Interpretation, Arithmetic, Series)<br>
+                • Reasoning Ability (Puzzles, Seating Arrangement, Logical Reasoning)<br>
+                • English Language (Reading Comprehension, Grammar)</p>
+                <p><strong>Phase 2 (Objective & Descriptive):</strong><br>
+                • Paper I: Economic and Social Issues (ESI) - Growth, Inflation, Social Structure in India.<br>
+                • Paper II: English (Writing Skills) - Essay, Precis, Comprehension.<br>
+                • Paper III: Finance and Management (FM) - Financial Markets, Risk Management, Corporate Governance, Leadership.</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>2. SBI PO & IBPS PO (Probationary Officer)</h3>
+                <p><strong>Starting Salary:</strong> ~₹65,000 - ₹70,000/month</p>
+                <p><strong>Prelims:</strong><br>
+                • English Language, Quantitative Aptitude, Reasoning Ability.</p>
+                <p><strong>Mains:</strong><br>
+                • Reasoning & Computer Aptitude (Advanced puzzles, input-output, flowcharts).<br>
+                • Data Analysis & Interpretation (Probability, advanced charts, caselets).<br>
+                • General/Economy/Banking Awareness (Banking terms, RBI circulars, static GK).<br>
+                • English Language (Inference, advanced reading comprehension).<br>
+                • Descriptive Paper (Letter and Essay writing).</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>3. NABARD Grade A (Assistant Manager)</h3>
+                <p><strong>Starting Salary:</strong> ~₹1,00,000/month</p>
+                <p><strong>Phase 1:</strong><br>
+                • Test of Reasoning, English Language, Computer Knowledge, Quantitative Aptitude, Decision Making.<br>
+                • General Awareness, Economic & Social Issues (ESI) with focus on Rural India.<br>
+                • Agriculture & Rural Development (ARD) with focus on Rural India.</p>
+                <p><strong>Phase 2:</strong><br>
+                • Paper I: General English (Descriptive).<br>
+                • Paper II: ESI and ARD (Objective + Descriptive).</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>4. SEBI Grade A (Assistant Manager)</h3>
+                <p><strong>Starting Salary:</strong> ~₹1,40,000/month</p>
+                <p><strong>Phase 1:</strong><br>
+                • Paper 1: General Awareness, English, Quant, Reasoning.<br>
+                • Paper 2: Commerce, Accountancy, Management, Finance, Costing, Companies Act, Economics.</p>
+                <p><strong>Phase 2:</strong><br>
+                • Paper 1: English (Descriptive).<br>
+                • Paper 2: Advanced Commerce, Accountancy, Management, Finance, Costing, Companies Act, Economics (Objective).</p>
+            </div>
+
+            <div class="syllabus-category">
+                <h3>5. SSC CGL (Group B Inspector Posts - Income Tax, MEA, Examiner)</h3>
+                <p><strong>Starting Salary:</strong> ~₹65,000 - ₹75,000/month</p>
+                <p><strong>Tier 1:</strong><br>
+                • General Intelligence & Reasoning (Analogy, Classification, Series, Non-verbal).<br>
+                • General Awareness (History, Geography, Polity, Science, Current Affairs).<br>
+                • Quantitative Aptitude (Algebra, Geometry, Trigonometry, Mensuration, Arithmetic).<br>
+                • English Comprehension (Grammar, Vocab, RC).</p>
+                <p><strong>Tier 2:</strong><br>
+                • Section 1: Mathematical Abilities & Reasoning/General Intelligence.<br>
+                • Section 2: English Language & Comprehension & General Awareness.<br>
+                • Section 3: Computer Knowledge Test & Data Entry Speed Test.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('currentUsername');
+            if (!username) window.location.href = 'index.html';
+            document.getElementById('username-display').textContent = username;
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('currentUsername');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

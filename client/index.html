@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Tracker - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1 style="margin-bottom: 1.5rem; font-size: 2rem;">Career Tracker</h1>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">Enter your username to access your journey.</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="off" placeholder="e.g. sagnik">
+                    <div id="error-message" class="error-message"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="login-btn">Start Journey</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

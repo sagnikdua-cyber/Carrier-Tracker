@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Tracker - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Career Tracker</div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="journey.html">Journey Roadmap</a>
+            <a href="syllabus.html">Syllabus</a>
+        </div>
+        <div class="nav-user">
+            <span id="username-display"></span>
+            <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="dashboard-header">
+            <div class="header-info">
+                <h1 id="welcome-message">Welcome</h1>
+                <p>Here is your current career progress.</p>
+            </div>
+            
+            <div class="overall-tracker">
+                <div class="circular-progress large">
+                    <svg><circle class="bg-circle" cx="50" cy="50" r="45"></circle><circle class="progress-circle overall-progress-stroke" cx="50" cy="50" r="45" stroke-dasharray="282.7" stroke-dashoffset="282.7"></circle></svg>
+                    <span class="progress-text" id="overall-text">0%</span>
+                </div>
+                <div class="overall-text">
+                    <h3>Overall Journey</h3>
+                    <p>Total Roadmap Completion</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="time-section">
+            <div class="time-card">
+                <h2>TODAY <span id="today-date-text" style="font-size:0.875rem;color:var(--text-muted);font-weight:normal;margin-left:0.5rem"></span></h2>
+                <div class="time-stats">
+                    <div class="stat-box"><div class="label">Planned</div><div class="value" id="daily-planned">0h</div></div>
+                    <div class="stat-box"><div class="label">Completed</div><div class="value" id="daily-completed">0h</div></div>
+                    <div class="stat-box"><div class="label">Remaining</div><div class="value" id="daily-remaining">0h</div></div>
+                </div>
+                <div class="linear-progress-container"><div class="linear-progress-bar" id="daily-progress-bar" style="width: 0%"></div></div>
+                <p style="text-align:center; font-size:0.875rem; margin-top:0.5rem" id="daily-progress-text">0%</p>
+            </div>
+
+            <div class="time-card">
+                <h2>THIS WEEK <span id="week-number-text" style="font-size:0.875rem;color:var(--text-muted);font-weight:normal;margin-left:0.5rem"></span></h2>
+                <div class="time-stats">
+                    <div class="stat-box"><div class="label">Planned</div><div class="value" id="weekly-planned">0h</div></div>
+                    <div class="stat-box"><div class="label">Completed</div><div class="value" id="weekly-completed">0h</div></div>
+                    <div class="stat-box"><div class="label">Remaining</div><div class="value" id="weekly-remaining">0h</div></div>
+                </div>
+                <div class="linear-progress-container"><div class="linear-progress-bar" id="weekly-progress-bar" style="width: 0%"></div></div>
+                <p style="text-align:center; font-size:0.875rem; margin-top:0.5rem" id="weekly-progress-text">0%</p>
+            </div>
+        </section>
+
+        <section class="trackers-section">
+            <h2>Career Trackers</h2>
+            <div class="trackers-grid">
+                <div class="tracker-card">
+                    <h3>Government</h3>
+                    <div class="circular-progress medium">
+                        <svg><circle class="bg-circle" cx="40" cy="40" r="35"></circle><circle class="progress-circle gov-progress" cx="40" cy="40" r="35" stroke-dasharray="219.9" stroke-dashoffset="219.9"></circle></svg>
+                        <span class="progress-text" id="gov-text">0%</span>
+                    </div>
+                </div>
+                <div class="tracker-card">
+                    <h3>GATE</h3>
+                    <div class="circular-progress medium">
+                        <svg><circle class="bg-circle" cx="40" cy="40" r="35"></circle><circle class="progress-circle gate-progress" cx="40" cy="40" r="35" stroke-dasharray="219.9" stroke-dashoffset="219.9"></circle></svg>
+                        <span class="progress-text" id="gate-text">0%</span>
+                    </div>
+                </div>
+                <div class="tracker-card">
+                    <h3>TCS NQT</h3>
+                    <div class="circular-progress medium">
+                        <svg><circle class="bg-circle" cx="40" cy="40" r="35"></circle><circle class="progress-circle tcs-progress" cx="40" cy="40" r="35" stroke-dasharray="219.9" stroke-dashoffset="219.9"></circle></svg>
+                        <span class="progress-text" id="tcs-text">0%</span>
+                    </div>
+                </div>
+                <div class="tracker-card">
+                    <h3>Placement</h3>
+                    <div class="circular-progress medium">
+                        <svg><circle class="bg-circle" cx="40" cy="40" r="35"></circle><circle class="progress-circle placement-progress" cx="40" cy="40" r="35" stroke-dasharray="219.9" stroke-dashoffset="219.9"></circle></svg>
+                        <span class="progress-text" id="placement-text">0%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Settings</h2>
+            <p style="margin-bottom: 1rem;">Configure your current "Extra Technology" focus. Changing this will update all unstarted tasks in this category.</p>
+            <form id="tech-form" class="settings-form">
+                <div class="form-group">
+                    <label for="extra-tech">Current Extra Technology</label>
+                    <select id="extra-tech" required>
+                        <option value="AI/ML">AI/ML</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="DevOps">DevOps</option>
+                        <option value="Full Stack Web Development">Full Stack Web Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Blockchain">Blockchain</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="save-tech-btn">Update Technology</button>
+            </form>
+            <div id="settings-msg" style="margin-top:0.5rem; font-size:0.875rem;"></div>
+        </section>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
