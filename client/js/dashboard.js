@@ -74,21 +74,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fetch Tracker Progress
     async function fetchTrackerProgress() {
         try {
-            const response = await fetch('/api/progress/trackers', {
+            const response = await fetch('/api/progress', {
                 headers: { 'x-username': username }
             });
             const data = await response.json();
             if (response.ok) {
-                updateCircularTracker('gov', data['Government']?.completionPercentage || 0);
-                updateCircularTracker('gate', data['GATE']?.completionPercentage || 0);
-                updateCircularTracker('tcs', data['TCS NQT']?.completionPercentage || 0);
-                updateCircularTracker('placement', data['Placement']?.completionPercentage || 0);
+                const gov = data['Government'] || 0;
+                const gate = data['GATE'] || 0;
+                const tcs = data['TCS NQT'] || 0;
+                const placement = data['Placement'] || 0;
+
+                updateCircularTracker('gov', gov);
+                updateCircularTracker('gate', gate);
+                updateCircularTracker('tcs', tcs);
+                updateCircularTracker('placement', placement);
 
                 // Calculate Overall
-                const totalPct = ((data['Government']?.completionPercentage || 0) + 
-                                  (data['GATE']?.completionPercentage || 0) + 
-                                  (data['TCS NQT']?.completionPercentage || 0) + 
-                                  (data['Placement']?.completionPercentage || 0)) / 4;
+                const totalPct = (gov + gate + tcs + placement) / 4;
                 
                 updateCircularTracker('overall', totalPct, true);
             }
