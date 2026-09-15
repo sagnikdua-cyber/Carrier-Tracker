@@ -1,4 +1,4 @@
-const CACHE_NAME = 'career-tracker-v1';
+const CACHE_NAME = 'progress-tracker-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -12,7 +12,8 @@ const STATIC_ASSETS = [
   '/js/pwa.js',
   '/manifest.json',
   '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/icons/icon-512x512.png',
+  '/icons/favicon.png'
 ];
 
 self.addEventListener('install', (event) => {
