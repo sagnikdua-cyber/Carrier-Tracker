@@ -1,0 +1,229 @@
+const fs = require('fs');
+const path = require('path');
+
+const weightageHtml = `
+<div class="container" style="padding-top: 2rem;">
+    <h1 style="margin-bottom: 2rem; color: var(--text-main);">GATE CS & DA Weightage Details</h1>
+    
+    <div style="background-color: var(--card-bg); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); margin-bottom: 2rem; overflow-x: auto;">
+        <h4 style="color: var(--text-main); margin-bottom: 1rem;">Overall Examination Information</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.75rem;">Description</th>
+                    <th style="padding: 0.75rem;">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">Marking Scheme (MCQ)</td><td style="padding: 0.75rem;">1 mark (no negative marking)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">Marking Scheme (NAT)</td><td style="padding: 0.75rem;">1 mark (no negative marking)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">Marking Scheme (MSQ)</td><td style="padding: 0.75rem;">2 marks (no negative marking)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">Total Questions</td><td style="padding: 0.75rem;">65 (MCQ + NAT + MSQ)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">Total Marks</td><td style="padding: 0.75rem;">100 (Each Subject)</td></tr>
+            </tbody>
+        </table>
+        
+        <h4 style="color: var(--text-main); margin-bottom: 1rem;">Subject-wise Number of Questions</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.75rem;">Subject</th>
+                    <th style="padding: 0.75rem;">NAT</th>
+                    <th style="padding: 0.75rem;">MSQ</th>
+                    <th style="padding: 0.75rem;">MCQ</th>
+                    <th style="padding: 0.75rem;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">CSE</td><td style="padding: 0.75rem;">5</td><td style="padding: 0.75rem;">10</td><td style="padding: 0.75rem;">15</td><td style="padding: 0.75rem;">30</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.75rem;">DA</td><td style="padding: 0.75rem;">5</td><td style="padding: 0.75rem;">10</td><td style="padding: 0.75rem;">15</td><td style="padding: 0.75rem;">30</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem; margin-top: 2rem; font-size: 1.25rem;">Computer Science and Engineering (CSE)</h4>
+        
+        <!-- CSE 1 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">1. Engineering Mathematics (15 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Complex Variables</td><td style="padding: 0.5rem;">7%</td><td style="padding: 0.5rem;">1.1</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Differential Equations</td><td style="padding: 0.5rem;">8%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Discrete Mathematics</td><td style="padding: 0.5rem;">8%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">Logic (3%), Set Theory (2%), Graphs (2%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Numerical Methods</td><td style="padding: 0.5rem;">8%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">Root Finding (3%), Interpolation (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Vector Calculus</td><td style="padding: 0.5rem;">8%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Calculus</td><td style="padding: 0.5rem;">12%</td><td style="padding: 0.5rem;">1.8</td><td style="padding: 0.5rem;">Limits (3%), Differentiation (4%), Integration (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Linear Algebra</td><td style="padding: 0.5rem;">12%</td><td style="padding: 0.5rem;">1.8</td><td style="padding: 0.5rem;">Matrices (4%), Eigenvalues (3%), Vector Spaces (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Probability & Statistics</td><td style="padding: 0.5rem;">12%</td><td style="padding: 0.5rem;">1.8</td><td style="padding: 0.5rem;">Random Variables (4%), Distributions (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others/Integrated</td><td style="padding: 0.5rem;">25%</td><td style="padding: 0.5rem;">3.7</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">15</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+
+        <!-- CSE 2 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">2. Discrete Structures (12 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Lattices & Boolean Algebra</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">K-Maps (3%), Simplification (2%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Logic</td><td style="padding: 0.5rem;">11%</td><td style="padding: 0.5rem;">1.3</td><td style="padding: 0.5rem;">Propositional, Predicate (5%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Relations & Functions</td><td style="padding: 0.5rem;">11%</td><td style="padding: 0.5rem;">1.3</td><td style="padding: 0.5rem;">Equivalence (4%), Inverse (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Set Theory</td><td style="padding: 0.5rem;">11%</td><td style="padding: 0.5rem;">1.3</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Combinatorics</td><td style="padding: 0.5rem;">12%</td><td style="padding: 0.5rem;">1.4</td><td style="padding: 0.5rem;">Permutations (5%), Combinations (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Graph Theory</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.8</td><td style="padding: 0.5rem;">Bipartite (4%), Connectivity (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">30%</td><td style="padding: 0.5rem;">3.7</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">12</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+
+        <!-- CSE 3 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">3. Computer Organization & Architecture (8 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Control Unit & CPU</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">0.8</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">System Interfacing</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">0.8</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Computer Fundamentals</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Input/Output Organization</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.2</td><td style="padding: 0.5rem;">Interrupts (4%), DMA (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Digital Logic</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">1.6</td><td style="padding: 0.5rem;">Boolean Algebra (3%), Combinational Circuits (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Processor & Memory</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">1.6</td><td style="padding: 0.5rem;">Pipelining (5%), Cache (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">0.8</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">8</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+
+        <!-- CSE 4 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">4. Programming and Data Structures (10 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Database Management</td><td style="padding: 0.5rem;">5%</td><td style="padding: 0.5rem;">0.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">File Handling</td><td style="padding: 0.5rem;">5%</td><td style="padding: 0.5rem;">0.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Object-Oriented Programming</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.0</td><td style="padding: 0.5rem;">Polymorphism (3%), Inheritance (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">C Programming</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">2.0</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Data Structures</td><td style="padding: 0.5rem;">25%</td><td style="padding: 0.5rem;">2.5</td><td style="padding: 0.5rem;">Arrays (5%), Linked Lists (5%), Trees (6%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Algorithms</td><td style="padding: 0.5rem;">30%</td><td style="padding: 0.5rem;">3.0</td><td style="padding: 0.5rem;">Sorting (8%), Searching (5%), Graphs (6%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">5%</td><td style="padding: 0.5rem;">0.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">10</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem; margin-top: 2rem; font-size: 1.25rem;">Data Science and Artificial Intelligence (DA)</h4>
+        
+        <!-- DA 1 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">1. Machine Learning (15 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Ensemble Methods</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Feature Engineering</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Normalization (3%), Feature Selection (4%)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Model Evaluation</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Accuracy (4%), Precision/Recall (3%)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Reinforcement Learning</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Q-Learning (4%), Policy Gradients (3%)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Unsupervised Learning</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">2.2</td><td style="padding: 0.5rem;">Clustering (7%), Dimensionality Reduction (5%)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Supervised Learning</td><td style="padding: 0.5rem;">30%</td><td style="padding: 0.5rem;">4.5</td><td style="padding: 0.5rem;">Regression (8%), Classification (10%)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">2.3</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">15</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+        
+        <!-- DA 2 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">2. Deep Learning (15 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">LSTM & GRU</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Sequential Modeling (4%), Gating (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">RNN</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Regularization</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Dropout (3%), L1/L2 (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">CNN</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">2.2</td><td style="padding: 0.5rem;">Convolutions (5%), Pooling (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Transformers</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">2.2</td><td style="padding: 0.5rem;">Attention (6%), BERT (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Neural Networks</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">3.0</td><td style="padding: 0.5rem;">Perceptrons (4%), Backpropagation (5%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">3.1</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">15</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+
+        <!-- DA 3 -->
+        <h5 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1.5rem;">3. Data Engineering (10 marks)</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Chapter</th>
+                    <th style="padding: 0.5rem;">Weightage (%)</th>
+                    <th style="padding: 0.5rem;">Approx. Marks</th>
+                    <th style="padding: 0.5rem;">Key Subtopics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Big Data Technologies</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.0</td><td style="padding: 0.5rem;">Hadoop (3%), Spark (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Data Collection</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Scraping (4%), APIs (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Data Storage</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">RDBMS (4%), NoSQL (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Data Warehousing</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">ETL & ELT</td><td style="padding: 0.5rem;">15%</td><td style="padding: 0.5rem;">1.5</td><td style="padding: 0.5rem;">Pipelines (4%), Orchestration (3%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Data Processing</td><td style="padding: 0.5rem;">20%</td><td style="padding: 0.5rem;">2.0</td><td style="padding: 0.5rem;">Cleaning (5%), Transformation (4%), etc.</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 0.5rem;">Others</td><td style="padding: 0.5rem;">10%</td><td style="padding: 0.5rem;">1.0</td><td style="padding: 0.5rem;">-</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color); font-weight: bold;"><td style="padding: 0.5rem;">Total</td><td style="padding: 0.5rem;">100%</td><td style="padding: 0.5rem;">10</td><td style="padding: 0.5rem;">-</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+`;
+
+// Read dashboard as a template
+const dashboardHtml = fs.readFileSync(path.join(__dirname, '../client/dashboard.html'), 'utf8');
+
+// Replace the active link and inject new link
+let weightagePage = dashboardHtml
+    .replace('class="active">Dashboard', '>Dashboard')
+    .replace('<a href="checklist.html">Checklists</a>', '<a href="checklist.html">Checklists</a>\\n            <a href="weightage.html" class="active">Weightage</a>');
+
+// Replace the main content
+const mainContentRegex = /<main class="container">[\s\S]*?<\/main>/;
+weightagePage = weightagePage.replace(mainContentRegex, '<main class="container">\\n' + weightageHtml + '\\n    </main>');
+
+// Replace title
+weightagePage = weightagePage.replace('<title>Progress Tracker - Dashboard</title>', '<title>Progress Tracker - Weightage</title>');
+
+fs.writeFileSync(path.join(__dirname, '../client/weightage.html'), weightagePage, 'utf8');
+console.log('Created weightage.html successfully!');
