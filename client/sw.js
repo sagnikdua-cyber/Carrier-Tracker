@@ -1,14 +1,18 @@
-const CACHE_NAME = 'progress-tracker-v2';
+const CACHE_NAME = 'progress-tracker-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/dashboard.html',
   '/journey.html',
   '/syllabus.html',
+  '/checklist.html',
+  '/weightage.html',
   '/css/style.css',
+  '/css/checklist.css',
   '/js/login.js',
   '/js/dashboard.js',
   '/js/journey.js',
+  '/js/checklist.js',
   '/js/pwa.js',
   '/manifest.json',
   '/icons/icon-192x192.png',
